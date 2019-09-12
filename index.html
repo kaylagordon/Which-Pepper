@@ -12,7 +12,7 @@
       </header>
     </div>
     <main>
-      <section id='start-screen'>
+      <section class='start-screen'>
           <form id='start-player-forms'>
             <div id='start-player1-form'>
               <input type='text' class='start-input' id='start-player1-input'>
@@ -22,16 +22,22 @@
               <input type='text' class='start-input' id='start-player2-input'>
               <p class='start-input-label'>PLAYER 2</p>
             </div>
-          <button type='button' name='start-button' id='start-button'>PLAY GAME</button>
+          <button type='button' name='start-button' class='play-button' id='start-play-button'>PLAY GAME</button>
         </form>
       </section>
-      <section id='rules-screen'>
+      <section class='hide rules-screen'>
+        <div id='rules-text'>
+          <h2>WELCOME <span id='rules-player1-name'>PLAYER 1</span> AND <span id='rules-player2-name'>PLAYER 2</span>!</h2>
+          <p>The goal of the game is to find all 5 pairs of cards as quickly as possible. The player that finds the greatest numbers of pairs, wins.</p>
+          <p>To begin playing, the player whose name is highlighted can click any card in the card pile. It will flip over and reveal a picture of  Beyonce. Click another card. If they match, they will disappear and you will have completed a match! If they don't, you'll have three seconds to look at them before they flip back over. Then it's time for the other player to try!</p>
+          <p>After you play, you'll see the name of the final winner and how long it took to win the game.</p>
+          <button type='button' name='start-button' class='play-button' id='rules-play-button'>PLAY GAME</button>
+        </div>
+      </section>
+      <section class='game-screen'>
 
       </section>
-      <section id='game-screen'>
-
-      </section>
-      <section id='game-over-screen'>
+      <section class='game-over-screen'>
 
       </section>
     </main>
