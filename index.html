@@ -15,29 +15,85 @@
       <section class='start-screen'>
           <form id='start-player-forms'>
             <div id='start-player1-form'>
-              <input type='text' class='start-input' id='start-player1-input'>
+              <input type='text' class='start-input' id='start-player1-input' maxlength='32'>
               <p class='start-input-label'>PLAYER 1</p>
             </div>
             <div id='start-player2-form'>
-              <input type='text' class='start-input' id='start-player2-input'>
+              <input type='text' class='start-input' id='start-player2-input' maxlength='32'>
               <p class='start-input-label'>PLAYER 2</p>
             </div>
-          <button type='button' name='start-button' class='play-button' id='start-play-button'>PLAY GAME</button>
+          <div id='start-button-with-error'>
+            <p class='start-error-message hide'>ENTER A NAME, PLEASE!</p>
+            <button type='button' name='start-button' class='play-button' id='start-play-button'>PLAY GAME</button>
+          </div>
         </form>
       </section>
-      <section class='hide rules-screen'>
-        <div id='rules-text'>
+      <section class='rules-screen hide'>
+        <div id='rules-info'>
           <h2>WELCOME <span id='rules-player1-name'>PLAYER 1</span> AND <span id='rules-player2-name'>PLAYER 2</span>!</h2>
-          <p>The goal of the game is to find all 5 pairs of cards as quickly as possible. The player that finds the greatest numbers of pairs, wins.</p>
-          <p>To begin playing, the player whose name is highlighted can click any card in the card pile. It will flip over and reveal a picture of  Beyonce. Click another card. If they match, they will disappear and you will have completed a match! If they don't, you'll have three seconds to look at them before they flip back over. Then it's time for the other player to try!</p>
-          <p>After you play, you'll see the name of the final winner and how long it took to win the game.</p>
+          <p class='rules-text'>The goal of the game is to find all 5 pairs of cards as quickly as possible. The player that finds the greatest numbers of pairs, wins.</p>
+          <p class='rules-text'>To begin playing, the player whose name is highlighted can click any card in the card pile. It will flip over and reveal a picture of  Beyonce. Click another card. If they match, they will disappear and you will have completed a match! If they don't, you'll have three seconds to look at them before they flip back over. Then it's time for the other player to try!</p>
+          <p class='rules-text'>After you play, you'll see the name of the final winner and how long it took to win the game.</p>
           <button type='button' name='start-button' class='play-button' id='rules-play-button'>PLAY GAME</button>
         </div>
       </section>
-      <section class='game-screen'>
-
+      <section class='game-screen hide'>
+        <aside class='game-aside' id='game-aside-player1'>
+          <h3 class='game-aside-h3' id='game-aside-player1-name'>PLAYER 1 NAME</h3>
+          <p class='aside-p'># TOP PLAYER</p>
+          <div class='game-aside-line'></div>
+          <p class='aside-p'>MATCHES THIS ROUND</p>
+          <p class='game-aside-round-number' id='game-aside-player1-round-number'>#</p>
+          <div class='game-aside-line'></div>
+          <h3 class='game-aside-h3'>GAME WINS</h3>
+          <p class='aside-p'>ROUND #</p>
+          <p class='aside-p aside-seconds'># SECONDS</p>
+        </aside>
+        <section id='game-board'>
+          <div class='game-card' id='game-card1'>
+            <img src='images/letter-p.png' alt='back of card'/>
+          </div>
+          <div class='game-card' id='game-card2'>
+            <img src='images/letter-p.png' alt='back of card'/>
+          </div>
+          <div class='game-card' id='game-card3'>
+            <img src='images/letter-p.png' alt='back of card'/>
+          </div>
+          <div class='game-card' id='game-card4'>
+            <img src='images/letter-p.png' alt='back of card'/>
+          </div>
+          <div class='game-card' id='game-card5'>
+            <img src='images/letter-p.png' alt='back of card'/>
+          </div>
+          <div class='game-card' id='game-card6'>
+            <img src='images/letter-p.png' alt='back of card'/>
+          </div>
+          <div class='game-card' id='game-card7'>
+            <img src='images/letter-p.png' alt='back of card'/>
+          </div>
+          <div class='game-card' id='game-card8'>
+            <img src='images/letter-p.png' alt='back of card'/>
+          </div>
+          <div class='game-card' id='game-card9'>
+            <img src='images/letter-p.png' alt='back of card'/>
+          </div>
+          <div class='game-card' id='game-card10'>
+            <img src='images/letter-p.png' alt='back of card'/>
+          </div>
+        </section>
+        <aside class='game-aside' id='game-aside-player2'>
+          <h3 class='game-aside-h3' id='game-aside-player2-name'>PLAYER 2 NAME</h3>
+          <p class='aside-p'># TOP PLAYER</p>
+          <div class='game-aside-line'></div>
+          <p class='aside-p'>MATCHES THIS ROUND</p>
+          <p class='game-aside-round-number' id='game-aside-player2-round-number'>#</p>
+          <div class='game-aside-line'></div>
+          <h3 class='game-aside-h3'>GAME WINS</h3>
+          <p class='aside-p'>ROUND #</p>
+          <p class='aside-p aside-seconds'># SECONDS</p>
+        </aside>
       </section>
-      <section class='game-over-screen'>
+      <section class='hide game-over-screen'>
 
       </section>
     </main>

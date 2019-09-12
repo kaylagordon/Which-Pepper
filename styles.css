@@ -26,7 +26,7 @@ header {
   top: 0;
   height: 7vw;
   box-shadow: 0 0 15px 0 #F1F1F1;
-  background-color: #fff;
+  background-color: white;
 }
 
 #nav-button {
@@ -94,17 +94,24 @@ main {
 }
 
 .play-button {
-  background-color: #000000;
+  background-color: black;
   border: none;
   width: 100%;
-  color: #FFF;
+  color: white;
   font-size: 1.8vw;
-  grid-area: button;
   height: 5vw;
 }
 
-/* RULES SCREEN */
+#start-button-with-error {
+  grid-area: button;
+}
 
+.start-error-message {
+  text-align: center;
+  color: #8B0000;
+}
+
+/* RULES SCREEN */
 .rules-screen {
   background-image: url(images/background.jpg);
   background-position: center;
@@ -117,7 +124,7 @@ main {
   grid-template-columns: 1fr 3fr 1fr;
 }
 
-#rules-text {
+#rules-info {
   width: 100%;
   grid-area: text;
   display: flex;
@@ -131,13 +138,122 @@ h2 {
   margin-bottom: 4vw;
 }
 
-p {
+.rules-text {
   width: 100%;
   margin-bottom: 3vw;
 }
 
+/* GAME SCREEN */
+.game-screen {
+  height: 100%;
+  display: grid;
+  grid-template-areas:
+  'aside1 board aside2';
+  grid-template-columns: 1fr 3fr 1fr;
+  background-color: #F4F7F6;
+}
 
+aside {
+  background-color: black;
+  color: white;
+  margin-top: 2vw;
+  padding: 1vw;
+  text-align: center;
+}
 
+#game-aside-player1 {
+  grid-area: aside1;
+}
+
+#game-aside-player2 {
+  grid-area: aside2;
+}
+
+h3 {
+  margin: 1.8vw 0;
+  font-size: 2vw;
+}
+
+.aside-p {
+  margin-top: 2vw;
+  font-size: 1.6vw;
+}
+
+.game-aside-line {
+  border: 1px solid white;
+  margin-top: 2vw;
+}
+
+.game-aside-round-number {
+  font-size: 5vw;
+  margin-top: 2vw;
+}
+
+.aside-seconds {
+  margin-top: 0;
+}
+
+#game-board {
+  grid-area: board;
+  margin-top: 2vw;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.game-card {
+  border: 1px solid black;
+  width: 9vw;
+  height: 12vw;
+  margin: 2vw;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#game-card1 {
+  transform: rotate(-30deg) translate(40px, 40px);
+}
+
+#game-card2 {
+  transform: rotate(25deg) translate(90px, -30px);
+}
+
+#game-card3 {
+  transform: rotate(0deg) translate(120px, 0px);
+}
+
+#game-card4 {
+  transform: rotate(10deg) translate(-320px, 260px);
+}
+
+#game-card5 {
+  transform: rotate(-25deg) translate(120px, 100px);
+}
+
+#game-card6 {
+  transform: rotate(-5deg) translate(150px);
+}
+
+#game-card7 {
+  transform: rotate(20deg) translate(140px, -75px);
+}
+
+#game-card8 {
+  transform: rotate(-5deg) translate(-320px, 130px);
+}
+
+#game-card9 {
+  transform: rotate(15deg) translate(200px, -80px);
+}
+
+#game-card10 {
+  transform: rotate(-10deg) translate(250px);
+}
+
+img {
+  width: 75%;
+}
 
 /* HIDE - KEEP AT BOTTOM */
 .hide {
