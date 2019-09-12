@@ -211,48 +211,48 @@ h3 {
   align-items: center;
 }
 
-#game-card1 {
+.game-card1 {
   transform: rotate(-30deg) translate(40px, 40px);
 }
 
-#game-card2 {
+.game-card2 {
   transform: rotate(25deg) translate(90px, -30px);
 }
 
-#game-card3 {
+.game-card3 {
   transform: rotate(0deg) translate(120px, 0px);
 }
 
-#game-card4 {
+.game-card4 {
   transform: rotate(10deg) translate(-320px, 260px);
 }
 
-#game-card5 {
+.game-card5 {
   transform: rotate(-25deg) translate(120px, 100px);
 }
 
-#game-card6 {
+.game-card6 {
   transform: rotate(-5deg) translate(150px);
 }
 
-#game-card7 {
+.game-card7 {
   transform: rotate(20deg) translate(140px, -75px);
 }
 
-#game-card8 {
+.game-card8 {
   transform: rotate(-5deg) translate(-320px, 130px);
 }
 
-#game-card9 {
+.game-card9 {
   transform: rotate(15deg) translate(200px, -80px);
 }
 
-#game-card10 {
+.game-card10 {
   transform: rotate(-10deg) translate(250px);
 }
 
 img {
-  width: 75%;
+  width: 100%;
 }
 
 /* HIDE - KEEP AT BOTTOM */

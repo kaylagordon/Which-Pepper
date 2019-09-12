@@ -18,10 +18,13 @@ var rulesPlayer2Name = document.querySelector('#rules-player2-name');
 
 // other variables
 var startErrorMessage = document.querySelector('.start-error-message');
+var gameBoard = document.querySelector('#game-board');
+var gameCard1 = document.querySelector('.game-card1');
 
 // event listeners
 startPlayButton.addEventListener('click', clickStartPlayButton);
 rulesPlayButton.addEventListener('click', clickRulesPlayButton);
+gameBoard.addEventListener('click', clickGameBoard);
 
 // mega functions
 function clickStartPlayButton() {
@@ -38,7 +41,39 @@ function clickRulesPlayButton() {
   switchSections(rulesScreen, gameScreen)
 }
 
+function clickGameBoard() {
+  if (event.target.parentNode.classList.contains('match1')) {
+    flipCard(event, 'images/card-pic1.jpg');
+  }
+  if (event.target.parentNode.classList.contains('match2')) {
+    flipCard(event, 'images/card-pic2.jpg');
+  }
+  if (event.target.parentNode.classList.contains('match3')) {
+    flipCard(event, 'images/card-pic3.jpg');
+  }
+  if (event.target.parentNode.classList.contains('match4')) {
+    flipCard(event, 'images/card-pic4.jpg');
+  }
+  if (event.target.parentNode.classList.contains('match5')) {
+    flipCard(event, 'images/card-pic5.jpg');
+  }
+}
+
 //functions
+function flipCard(event, pic) {
+  if (event.target.parentNode.classList.contains('pic-showing')) {
+    event.target.src = 'images/letter-p.png';
+  } else {
+    event.target.src = pic;
+  }
+  event.target.parentNode.classList.toggle('pic-showing');
+}
+
+// function flipBack(event) {
+//   event.target.src = 'images/letter-p.png';
+//   event.target.parentNode.classList.remove('pic-showing');
+// }
+
 function switchSections(hide, show) {
   hide.classList.add('hide');
   show.classList.remove('hide');
@@ -46,7 +81,7 @@ function switchSections(hide, show) {
 
 function insertNames(text, input) {
   var capitalName = input.value.toUpperCase();
-  text.innerHTML = capitalName;
+  text.innerText = capitalName;
 };
 
 function showErrorMessage(errorText) {
