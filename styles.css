@@ -1,0 +1,48 @@
+.clearfix:after {
+    content: ' ';
+    display: table;
+    clear: both;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  /* border: 1px solid steelblue; */
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 7vw;
+  box-shadow: 0 0 15px 0 #F1F1F1;
+}
+
+#nav-button {
+  background-image: url(images/nav-button.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 6.9%;
+}
+
+h1 {
+  font-size: 2.5vw;
+  width: 90%;
+  text-align: center;
+  margin: 2.25vw 0;
+}
+
+/* MAIN */
+main {
+  margin-top: 7vw;
+}
