@@ -25,6 +25,7 @@ header {
   top: 0;
   height: 7vw;
   box-shadow: 0 0 15px 0 #F1F1F1;
+  background-color: #fff;
 }
 
 #nav-button {
@@ -45,4 +46,55 @@ h1 {
 /* MAIN */
 main {
   margin-top: 7vw;
+}
+
+/* GAME START SCREEN */
+#start-screen {
+  background-image: url(images/background.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+
+#start-player-forms {
+  height: 100%;
+  display: grid;
+  grid-template-areas:
+    '. . . . .'
+    '. player1 . player2 .'
+    '. . . . .'
+    '. button button button .'
+    '. . . . .';
+  grid-template-columns: 2fr 2.5fr 1fr 2.5fr 2fr;
+  grid-template-rows: 3.2fr 1fr 2.1fr .5fr 3.2fr;
+}
+
+#start-player1-form {
+  width: 100%;
+  grid-area: player1;
+}
+
+.start-input {
+  width: 100%;
+  height: 50%;
+}
+
+.start-input-label {
+  width: 100%;
+  font-size: 1.8vw;
+}
+
+#start-player2-form {
+  width: 100%;
+  grid-area: player2;
+}
+
+#start-button {
+  background-color: #000000;
+  border: none;
+  width: 100%;
+  color: #FFF;
+  font-size: 1.8vw;
+  grid-area: button;
 }
