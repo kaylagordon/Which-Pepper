@@ -16,11 +16,13 @@ var startPlayer2Input = document.querySelector('#start-player2-input');
 var rulesPlayer1Name = document.querySelector('#rules-player1-name');
 var rulesPlayer2Name = document.querySelector('#rules-player2-name');
 
-// other variables
+// other selectors
 var startErrorMessage = document.querySelector('.start-error-message');
 var gameBoard = document.querySelector('#game-board');
 var gameCard1 = document.querySelector('.game-card1');
-var decks = [];
+
+// variables
+var decksArr = [];
 
 // event listeners
 startPlayButton.addEventListener('click', clickStartPlayButton);
@@ -44,20 +46,8 @@ function clickRulesPlayButton() {
 };
 
 function clickGameBoard() {
-  if (event.target.parentNode.classList.contains('match1')) {
-    flipCard(event, 'images/card-pic1.jpg');
-  }
-  if (event.target.parentNode.classList.contains('match2')) {
-    flipCard(event, 'images/card-pic2.jpg');
-  }
-  if (event.target.parentNode.classList.contains('match3')) {
-    flipCard(event, 'images/card-pic3.jpg');
-  }
-  if (event.target.parentNode.classList.contains('match4')) {
-    flipCard(event, 'images/card-pic4.jpg');
-  }
-  if (event.target.parentNode.classList.contains('match5')) {
-    flipCard(event, 'images/card-pic5.jpg');
+  if (event.target.parentNode.classList.contains('game-card')) {
+    flipCard(event);
   }
 };
 
@@ -66,21 +56,19 @@ function instantiateCards() {
   var gameCards = document.querySelectorAll('.game-card');
   var cardsArr = [];
   for (var i = 0; i < gameCards.length; i++) {
-    console.log(gameCards[i].dataset.id);
     var card = new Cards({matchId: gameCards[i].dataset.id});
-    console.log(card);
     cardsArr.push(card);
   }
   var deck = new Deck({cards: cardsArr});
-  decks.push(deck);
-  console.log(deck);
+  decksArr.push(deck);
 };
 
-function flipCard(event, pic) {
+function flipCard(event) {
   if (event.target.parentNode.classList.contains('pic-showing')) {
     event.target.src = 'images/letter-p.png';
   } else {
-    event.target.src = pic;
+    event.target.src = event.target.parentNode.dataset.src;
+    console.log(event.target.src);
   }
   event.target.parentNode.classList.toggle('pic-showing');
 };

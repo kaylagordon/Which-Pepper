@@ -11,7 +11,9 @@ class Deck {
   }
 
   checkSelectedCards() {
-
+    if(this.cards[i].selected = true) {
+      counter++;
+    }
   }
 
   moveToMatched() {
