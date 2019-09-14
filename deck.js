@@ -10,11 +10,11 @@ class Deck {
 
   }
 
-  checkSelectedCards() {
-    if(this.cards[i].selected = true) {
-      counter++;
-    }
-  }
+  // checkSelectedCards() {
+  //   if(this.cards[i].selected = true) {
+  //     counter++;
+  //   }
+  // }
 
   moveToMatched() {
 

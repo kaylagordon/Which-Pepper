@@ -49,6 +49,7 @@ function clickGameBoard() {
   if (event.target.parentNode.classList.contains('game-card')) {
     flipCard(event);
   }
+  callUpdateSelected(event);
 };
 
 //functions
@@ -56,11 +57,11 @@ function instantiateCards() {
   var gameCards = document.querySelectorAll('.game-card');
   var cardsArr = [];
   for (var i = 0; i < gameCards.length; i++) {
-    var card = new Cards({matchId: gameCards[i].dataset.id});
+    var card = new Cards({cardId: gameCards[i].dataset.id, matchId: gameCards[i].dataset.matchid});
     cardsArr.push(card);
   }
   var deck = new Deck({cards: cardsArr});
-  decksArr.push(deck);
+  decksArr = deck;
 };
 
 function flipCard(event) {
@@ -68,7 +69,6 @@ function flipCard(event) {
     event.target.src = 'images/letter-p.png';
   } else {
     event.target.src = event.target.parentNode.dataset.src;
-    console.log(event.target.src);
   }
   event.target.parentNode.classList.toggle('pic-showing');
 };
@@ -85,4 +85,12 @@ function insertNames(text, input) {
 
 function showErrorMessage(errorText) {
   errorText.classList.remove('hide');
+};
+
+function callUpdateSelected(event) {
+  for (var i = 0; i < decksArr.cards.length; i++) {
+    if (parseInt(event.target.parentNode.dataset.id) == decksArr.cards[i].cardId) {
+      decksArr.cards[i].updateSelected();
+    }
+  }
 };
