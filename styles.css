@@ -301,9 +301,9 @@ img {
 
 
 /* HIDING - KEEP AT BOTTOM */
-/* .hide {
+.hide {
   display: none;
-} */
+}
 
 .hide-card {
   visibility: hidden;
