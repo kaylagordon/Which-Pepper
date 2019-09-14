@@ -22,7 +22,7 @@ var gameBoard = document.querySelector('#game-board');
 var gameCard1 = document.querySelector('.game-card1');
 
 // variables
-var decksArr = [];
+var decksArr = null;
 
 // event listeners
 startPlayButton.addEventListener('click', clickStartPlayButton);
@@ -47,9 +47,8 @@ function clickRulesPlayButton() {
 
 function clickGameBoard() {
   if (event.target.parentNode.classList.contains('game-card')) {
-    flipCard(event);
+    flipCardPic(event);
   }
-  callUpdateSelected(event);
 };
 
 //functions
@@ -64,13 +63,16 @@ function instantiateCards() {
   decksArr = deck;
 };
 
-function flipCard(event) {
+function flipCardPic(event) {
   if (event.target.parentNode.classList.contains('pic-showing')) {
     event.target.src = 'images/letter-p.png';
-  } else {
+    event.target.parentNode.classList.toggle('pic-showing');
+    callUpdateSelected(event);
+  } else if (decksArr.selectedCards.length < 2){
     event.target.src = event.target.parentNode.dataset.src;
+    event.target.parentNode.classList.toggle('pic-showing');
+    callUpdateSelected(event);
   }
-  event.target.parentNode.classList.toggle('pic-showing');
 };
 
 function switchSections(hide, show) {
@@ -90,7 +92,7 @@ function showErrorMessage(errorText) {
 function callUpdateSelected(event) {
   for (var i = 0; i < decksArr.cards.length; i++) {
     if (parseInt(event.target.parentNode.dataset.id) == decksArr.cards[i].cardId) {
-      decksArr.cards[i].updateSelected();
+      decksArr.cards[i].updateSelected(decksArr);
     }
   }
 };
