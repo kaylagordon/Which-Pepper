@@ -211,7 +211,7 @@ h3 {
   align-items: center;
 }
 
-.game-card1 {
+/* .game-card1 {
   transform: rotate(-30deg) translate(40px, 40px);
 }
 
@@ -249,13 +249,13 @@ h3 {
 
 .game-card10 {
   transform: rotate(-10deg) translate(250px);
-}
+} */
 
 img {
   width: 100%;
 }
 
 /* HIDE - KEEP AT BOTTOM */
-/* .hide {
+.hide {
   display: none;
-} */
+}

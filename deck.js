@@ -10,14 +10,14 @@ class Deck {
 
   }
 
-  checkSelectedCards() {
+  checkMatched(match) {
     if(this.selectedCards[0].matchId === this.selectedCards[1].matchId) {
-      console.log('WOOOOO')
+      this.matchedCards.push(this.selectedCards[0]);
+      this.matchedCards.push(this.selectedCards[1]);
+      this.selectedCards = [];
+      this.matches++;
+      hideMatched(match);
     }
-  }
-
-  moveToMatched() {
-
   }
 
 };

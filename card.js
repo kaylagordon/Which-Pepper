@@ -18,7 +18,7 @@ class Cards {
       deck.selectedCards.splice(deck.selectedCards.indexOf(this), 1);
     }
     if(deck.selectedCards.length === 2) {
-      deck.checkSelectedCards();
+      deck.checkMatched(this.matchId);
     }
   }
 
