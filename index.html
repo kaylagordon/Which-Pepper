@@ -30,16 +30,16 @@
       </section>
       <section class='rules-screen hide'>
         <div id='rules-info'>
-          <h2>WELCOME <span id='rules-player1-name'>PLAYER 1</span> AND <span id='rules-player2-name'>PLAYER 2</span>!</h2>
+          <h2>WELCOME <span class='player1-text'>PLAYER 1</span> AND <span class='player2-text'>PLAYER 2</span>!</h2>
           <p class='rules-text'>The goal of the game is to find all 5 pairs of cards as quickly as possible. The player that finds the greatest numbers of pairs, wins.</p>
-          <p class='rules-text'>To begin playing, the player whose name is highlighted can click any card in the card pile. It will flip over and reveal a picture of  Beyonce. Click another card. If they match, they will disappear and you will have completed a match! If they don't, you'll have three seconds to look at them before they flip back over. Then it's time for the other player to try!</p>
+          <p class='rules-text'>To begin playing, the player whose name is highlighted can click any card in the card pile. It will flip over and reveal a picture of the most adorable cat in the world, Pepper. Click another card. If they match, they will disappear and you will have completed a match! If they don't, you'll have three seconds to look at them before they flip back over. Then it's time for the other player to try!</p>
           <p class='rules-text'>After you play, you'll see the name of the final winner and how long it took to win the game.</p>
           <button type='button' name='start-button' class='play-button' id='rules-play-button'>PLAY GAME</button>
         </div>
       </section>
-      <section class='game-screen'>
+      <section class='game-screen hide'>
         <aside class='game-aside' id='game-aside-player1'>
-          <h3 class='game-aside-h3' id='game-aside-player1-name'>PLAYER 1 NAME</h3>
+          <h3 class='game-aside-h3 player1-text'>PLAYER 1 NAME</h3>
           <p class='aside-p'># TOP PLAYER</p>
           <div class='game-aside-line'></div>
           <p class='aside-p'>MATCHES THIS ROUND</p>
@@ -82,7 +82,7 @@
           </div>
         </section>
         <aside class='game-aside' id='game-aside-player2'>
-          <h3 class='game-aside-h3' id='game-aside-player2-name'>PLAYER 2 NAME</h3>
+          <h3 class='game-aside-h3 player2-text'>PLAYER 2 NAME</h3>
           <p class='aside-p'># TOP PLAYER</p>
           <div class='game-aside-line'></div>
           <p class='aside-p'>MATCHES THIS ROUND</p>
@@ -93,8 +93,16 @@
           <p class='aside-p aside-seconds'># SECONDS</p>
         </aside>
       </section>
-      <section class='hide game-over-screen'>
-
+      <section class='game-over-screen hide'>
+        <div id='game-over-info'>
+          <h2>CONGRATULATIONS, <span class='player1-text'>PLAYER 1</span> WINS!</h2>
+          <p id='game-over-timing'>It took you # seconds.</p>
+          <p class='rules-text'>Click below to keep playing.</p>
+          <div id='game-over-buttons'>
+            <button class='game-over-button' id='new-game-button'>NEW GAME</button>
+            <button class='game-over-button' id='rematch-button'>REMATCH</button>
+          </div>
+        </div>
       </section>
     </main>
     <script type='text/javascript' src='card.js'></script>

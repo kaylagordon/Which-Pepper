@@ -13,8 +13,8 @@ var startPlayer1Input = document.querySelector('#start-player1-input');
 var startPlayer2Input = document.querySelector('#start-player2-input');
 
 // text changes
-var rulesPlayer1Name = document.querySelector('#rules-player1-name');
-var rulesPlayer2Name = document.querySelector('#rules-player2-name');
+var player1Text = document.querySelectorAll('.player1-text');
+var player2Text = document.querySelectorAll('.player2-text');
 var gameAsidePlayer1MatchesNumber = document.querySelector('#game-aside-player1-matches-number');
 
 // other selectors
@@ -34,8 +34,8 @@ gameBoard.addEventListener('click', clickGameBoard);
 function clickStartPlayButton() {
   if (startPlayer1Input.value.length) {
     switchSections(startScreen, rulesScreen);
-    insertNames(rulesPlayer1Name, startPlayer1Input);
-    insertNames(rulesPlayer2Name, startPlayer2Input);
+    insertNames(player1Text, startPlayer1Input);
+    insertNames(player2Text, startPlayer2Input);
   } else {
     showErrorMessage(startErrorMessage);
   }
@@ -81,8 +81,10 @@ function switchSections(hide, show) {
 };
 
 function insertNames(text, input) {
-  var capitalName = input.value.toUpperCase();
-  text.innerText = capitalName;
+  for (var i = 0; i < text.length; i++) {
+    var capitalName = input.value.toUpperCase();
+    text[i].innerText = capitalName;
+  }
 };
 
 function showErrorMessage(errorText) {
@@ -100,8 +102,11 @@ function callUpdateSelected(event) {
 function hideMatched(match) {
   for (var i = 0; i < gameCards.length; i++) {
     if (parseInt(gameCards[i].dataset.matchid) === match) {
-      gameCards[i].classList.add('hide');
+      gameCards[i].classList.add('hide-card');
     }
   }
   gameAsidePlayer1MatchesNumber.innerText = decksArr.matches;
+  if (decksArr.matches === 5) {
+    switchSections(gameScreen, gameOverScreen);
+  }
 };
