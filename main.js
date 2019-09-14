@@ -15,14 +15,14 @@ var startPlayer2Input = document.querySelector('#start-player2-input');
 // text changes
 var rulesPlayer1Name = document.querySelector('#rules-player1-name');
 var rulesPlayer2Name = document.querySelector('#rules-player2-name');
+var gameAsidePlayer1MatchesNumber = document.querySelector('#game-aside-player1-matches-number');
 
 // other selectors
 var startErrorMessage = document.querySelector('.start-error-message');
 var gameBoard = document.querySelector('#game-board');
-// var gameCard1 = document.querySelector('.game-card1');
 var gameCards = document.querySelectorAll('.game-card');
 
-// variables
+// global non-qs variables
 var decksArr = null;
 
 // event listeners
@@ -103,4 +103,5 @@ function hideMatched(match) {
       gameCards[i].classList.add('hide');
     }
   }
+  gameAsidePlayer1MatchesNumber.innerText = decksArr.matches;
 };
