@@ -13,9 +13,12 @@ class Cards {
   updateSelected(deck) {
     this.selected = !this.selected;
     if (this.selected === true) {
-      deck.selectedCards.push(this.cardId);
+      deck.selectedCards.push(this);
     } else {
-      deck.selectedCards.splice(deck.selectedCards.indexOf(this.cardId), 1);
+      deck.selectedCards.splice(deck.selectedCards.indexOf(this), 1);
+    }
+    if(deck.selectedCards.length === 2) {
+      deck.checkSelectedCards();
     }
   }
 

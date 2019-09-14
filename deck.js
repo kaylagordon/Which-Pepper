@@ -10,11 +10,11 @@ class Deck {
 
   }
 
-  // checkSelectedCards() {
-  //   if(this.cards[i].selected = true) {
-  //     counter++;
-  //   }
-  // }
+  checkSelectedCards() {
+    if(this.selectedCards[0].matchId === this.selectedCards[1].matchId) {
+      console.log('WOOOOO')
+    }
+  }
 
   moveToMatched() {
 
