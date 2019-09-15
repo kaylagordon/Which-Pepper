@@ -16,6 +16,7 @@ var startPlayer2Input = document.querySelector('#start-player2-input');
 var player1Text = document.querySelectorAll('.player1-text');
 var player2Text = document.querySelectorAll('.player2-text');
 var gameAsidePlayer1MatchesNumber = document.querySelector('#game-aside-player1-matches-number');
+var timer = document.querySelector('#timer');
 
 // other selectors
 var startErrorMessage = document.querySelector('.start-error-message');
@@ -24,6 +25,9 @@ var gameCards = document.querySelectorAll('.game-card');
 
 // global non-qs variables
 var decksArr = null;
+var timeStart = null;
+var timeEnd = null;
+var totalTime = null;
 
 // event listeners
 startPlayButton.addEventListener('click', clickStartPlayButton);
@@ -44,6 +48,7 @@ function clickStartPlayButton() {
 function clickRulesPlayButton() {
   switchSections(rulesScreen, gameScreen);
   instantiateCards();
+  startTimer();
 };
 
 function clickGameBoard() {
@@ -53,6 +58,23 @@ function clickGameBoard() {
 };
 
 //functions
+function startTimer() {
+  timeStart = Date.now();
+  console.log(timeStart);
+}
+
+function endTimer() {
+  timeEnd = Date.now();
+  console.log(timeEnd);
+  totalTime = (timeEnd - timeStart)/1000;
+  console.log(totalTime);
+  logTime();
+}
+
+function logTime() {
+  timer.innerText = totalTime;
+}
+
 function instantiateCards() {
   var cardsArr = [];
   for (var i = 0; i < gameCards.length; i++) {
@@ -107,6 +129,7 @@ function hideMatched(match) {
   }
   gameAsidePlayer1MatchesNumber.innerText = decksArr.matches;
   if (decksArr.matches === 5) {
+    endTimer();
     switchSections(gameScreen, gameOverScreen);
   }
 };
