@@ -16,7 +16,8 @@ var startPlayer2Input = document.querySelector('#start-player2-input');
 var player1Text = document.querySelectorAll('.player1-text');
 var player2Text = document.querySelectorAll('.player2-text');
 var gameAsidePlayer1MatchesNumber = document.querySelector('#game-aside-player1-matches-number');
-var timer = document.querySelector('#timer');
+var timerMinutes = document.querySelector('#timer-minutes');
+var timerSeconds = document.querySelector('#timer-seconds');
 
 // other selectors
 var startErrorMessage = document.querySelector('.start-error-message');
@@ -28,6 +29,7 @@ var decksArr = null;
 var timeStart = null;
 var timeEnd = null;
 var totalTime = null;
+var picSrc = ['images/card-pic5.jpg', 'images/card-pic1.jpg', 'images/card-pic2.jpg', 'images/card-pic1.jpg', 'images/card-pic3.jpg', 'images/card-pic2.jpg', 'images/card-pic4.jpg', 'images/card-pic5.jpg', 'images/card-pic3.jpg', 'images/card-pic4.jpg'];
 
 // event listeners
 startPlayButton.addEventListener('click', clickStartPlayButton);
@@ -60,25 +62,25 @@ function clickGameBoard() {
 //functions
 function startTimer() {
   timeStart = Date.now();
-  console.log(timeStart);
 }
 
 function endTimer() {
   timeEnd = Date.now();
-  console.log(timeEnd);
   totalTime = (timeEnd - timeStart)/1000;
-  console.log(totalTime);
+  totalMinutes = Math.round(totalTime / 60);
+  totalSeconds = Math.round(totalTime%60);
   logTime();
 }
 
 function logTime() {
-  timer.innerText = totalTime;
+  timerMinutes.innerText = totalMinutes;
+  timerSeconds.innerText = totalSeconds;
 }
 
 function instantiateCards() {
   var cardsArr = [];
   for (var i = 0; i < gameCards.length; i++) {
-    var card = new Cards({cardId: gameCards[i].dataset.id, matchId: gameCards[i].dataset.matchid});
+    var card = new Cards({cardId: gameCards[i].dataset.id, matchId: picSrc[i]});
     cardsArr.push(card);
   }
   var deck = new Deck({cards: cardsArr});
@@ -91,7 +93,7 @@ function flipCardPic(event) {
     event.target.parentNode.classList.toggle('pic-showing');
     callUpdateSelected(event);
   } else if (decksArr.selectedCards.length < 2){
-    event.target.src = event.target.parentNode.dataset.src;
+    event.target.src = decksArr.cards[event.target.parentNode.dataset.id].matchId;
     event.target.parentNode.classList.toggle('pic-showing');
     callUpdateSelected(event);
   }
@@ -121,9 +123,9 @@ function callUpdateSelected(event) {
   }
 };
 
-function hideMatched(match) {
+function hideMatched(card1, card2) {
   for (var i = 0; i < gameCards.length; i++) {
-    if (parseInt(gameCards[i].dataset.matchid) === match) {
+    if (parseInt(gameCards[i].dataset.id) === card1 || parseInt(gameCards[i].dataset.id) === card2) {
       gameCards[i].classList.add('hide-card');
     }
   }

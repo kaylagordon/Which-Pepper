@@ -2,12 +2,9 @@ class Cards {
   constructor(cardObj) {
     this.cardId = parseInt(cardObj.cardId);
     this.selected = false;
-    this.matchId = parseInt(cardObj.matchId);
+    this.matchId = cardObj.matchId;
     this.matched = false;
-  }
-
-  match() {
-
+    // this.picSrc = cardObj.picSrc;
   }
 
   updateSelected(deck) {
@@ -18,7 +15,7 @@ class Cards {
       deck.selectedCards.splice(deck.selectedCards.indexOf(this), 1);
     }
     if(deck.selectedCards.length === 2) {
-      deck.checkMatched(this.matchId);
+      deck.checkMatched();
     }
   }
 
