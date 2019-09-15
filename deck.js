@@ -7,7 +7,23 @@ class Deck {
   }
 
   shuffle() {
+    var length = picSrc.length;
+    var temporaryLoc = null;
+    for (var i = 0; i < picSrc.length; i++) {
+      var newIndex = Math.floor(Math.random() * length);
+      length--;
+      temporaryLoc = picSrc[length];
+      picSrc[length] = picSrc[newIndex];
+      picSrc[newIndex] = temporaryLoc;
+    }
+    this.resetCards();
+  }
 
+  resetCards() {
+    for (var i = 0; i< this.cards.length; i++) {
+      this.cards[i].selected = false;
+      this.cards[i].matched = false;
+    }
   }
 
   checkMatched() {

@@ -7,6 +7,7 @@ var gameOverScreen = document.querySelector('.game-over-screen');
 // buttons
 var startPlayButton = document.querySelector('#start-play-button');
 var rulesPlayButton = document.querySelector('#rules-play-button');
+var newGameButton = document.querySelector('#new-game-button');
 
 // inputs
 var startPlayer1Input = document.querySelector('#start-player1-input');
@@ -35,8 +36,15 @@ var picSrc = ['images/card-pic5.jpg', 'images/card-pic1.jpg', 'images/card-pic2.
 startPlayButton.addEventListener('click', clickStartPlayButton);
 rulesPlayButton.addEventListener('click', clickRulesPlayButton);
 gameBoard.addEventListener('click', clickGameBoard);
+newGameButton.addEventListener('click', clickNewGameButton);
 
 // mega functions
+function clickNewGameButton() {
+  switchSections(gameOverScreen, startScreen);
+  clearInputs();
+  showCards();
+};
+
 function clickStartPlayButton() {
   if (startPlayer1Input.value.length) {
     switchSections(startScreen, rulesScreen);
@@ -60,9 +68,25 @@ function clickGameBoard() {
 };
 
 //functions
+function clearInputs() {
+  startPlayer1Input.value = '';
+  startPlayer2Input.value = '';
+};
+
+function showCards() {
+  console.log(event);
+  for (var i = 0; i < gameCards.length; i++) {
+    gameCards[i].classList.remove('hide-card');
+    event.target.parentElement.parentElement.parentElement.parentElement.children[2].children[1].children[i].children[0].src = 'images/letter-p.png';
+    gameCards[i].classList.toggle('pic-showing');
+  }
+};
+
+
+
 function startTimer() {
   timeStart = Date.now();
-}
+};
 
 function endTimer() {
   timeEnd = Date.now();
@@ -70,7 +94,7 @@ function endTimer() {
   totalMinutes = Math.round(totalTime / 60);
   totalSeconds = Math.round(totalTime%60);
   logTime();
-}
+};
 
 function logTime() {
   timerMinutes.innerText = totalMinutes;
@@ -133,5 +157,6 @@ function hideMatched(card1, card2) {
   if (decksArr.matches === 5) {
     endTimer();
     switchSections(gameScreen, gameOverScreen);
+    decksArr.shuffle();
   }
 };
