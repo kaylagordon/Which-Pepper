@@ -96,6 +96,7 @@ function clearInputs() {
 
 function flipCardPic(event) {
   event.target.parentNode.classList.add('on-click-animation');
+  event.target.parentNode.classList.remove('no-match-animation');
   event.target.src = decksArr.cards[event.target.parentNode.dataset.id].matchId;
   event.target.parentNode.classList.add('flipped');
   callMethods(event);
@@ -105,6 +106,7 @@ function flipCardBack(event) {
   for (var i = 0; i < gameCards.length; i++) {
     if (gameCards[i].classList.contains('flipped')) {
       gameCards[i].classList.remove('flipped');
+      gameCards[i].classList.add('no-match-animation');
       gameCards[i].children[0].src = 'images/letter-p.png';
       decksArr.cards[i].updateSelected(decksArr);
       gameCards[i].classList.remove('on-click-animation');
@@ -166,6 +168,8 @@ function showCards() {
   for (var i = 0; i < gameCards.length; i++) {
     gameCards[i].classList.remove('hide-card');
     gameCards[i].classList.remove('flipped');
+    gameCards[i].classList.remove('no-match-animation');
+
     event.target.parentElement.parentElement.parentElement.parentElement.children[2].children[1].children[i].children[0].src = 'images/letter-p.png';
   }
 };
