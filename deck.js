@@ -19,8 +19,12 @@ class Deck {
   }
 
   resetCards() {
-      this.cards[i].selected = false;
-      this.selectedCards = [];
+    this.selectedCards = [];
+    this.matchedCards = [];
+    this.matches = 0;
+    for (var i = 0; i < this.cards.length; i++) {
+      this.cards[1].selected = false;
+    }
   }
 
   shuffle(array) {
