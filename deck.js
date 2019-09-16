@@ -25,15 +25,15 @@ class Deck {
     }
   }
 
-  shuffle() {
-    var length = picSrc.length;
+  shuffle(array) {
+    var length = array.length;
     var temporaryLoc = null;
-    for (var i = 0; i < picSrc.length; i++) {
+    for (var i = 0; i < array.length; i++) {
       var newIndex = Math.floor(Math.random() * length);
       length--;
-      temporaryLoc = picSrc[length];
-      picSrc[length] = picSrc[newIndex];
-      picSrc[newIndex] = temporaryLoc;
+      temporaryLoc = array[length];
+      array[length] = array[newIndex];
+      array[newIndex] = temporaryLoc;
     }
     this.resetCards();
   }

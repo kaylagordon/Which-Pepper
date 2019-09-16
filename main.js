@@ -92,9 +92,11 @@ function clearInputs() {
 function flipCardPic(event) {
   if (event.target.parentNode.classList.contains('pic-showing')) {
     event.target.src = 'images/letter-p.png';
+    event.target.parentNode.classList.toggle('on-click-animation');
     event.target.parentNode.classList.toggle('pic-showing');
     callUpdateSelected(event);
   } else if (decksArr.selectedCards.length < 2){
+    event.target.parentNode.classList.toggle('on-click-animation');
     event.target.src = decksArr.cards[event.target.parentNode.dataset.id].matchId;
     event.target.parentNode.classList.toggle('pic-showing');
     callUpdateSelected(event);
@@ -111,7 +113,7 @@ function hideMatched(card1, card2) {
   if (decksArr.matches === 5) {
     calculateTime();
     switchSections(gameScreen, gameOverScreen);
-    decksArr.shuffle();
+    decksArr.shuffle(picSrc);
   }
 };
 
@@ -138,7 +140,6 @@ function logTime() {
 };
 
 function showCards() {
-  console.log(event);
   for (var i = 0; i < gameCards.length; i++) {
     gameCards[i].classList.remove('hide-card');
     event.target.parentElement.parentElement.parentElement.parentElement.children[2].children[1].children[i].children[0].src = 'images/letter-p.png';
