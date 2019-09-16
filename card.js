@@ -1,9 +1,9 @@
 class Cards {
   constructor(cardObj) {
     this.cardId = parseInt(cardObj.cardId);
-    this.selected = false;
-    this.matchId = cardObj.matchId;
     this.matched = false;
+    this.matchId = cardObj.matchId;
+    this.selected = false;
     // this.picSrc = cardObj.picSrc;
   }
 
