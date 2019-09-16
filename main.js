@@ -40,7 +40,7 @@ startPlayButton.addEventListener('click', clickStartPlayButton);
 
 // mega functions
 function clickGameBoard() {
-  if (event.target.parentNode.classList.contains('game-card')) {
+  if (event.target.parentNode.classList.contains('game-card') && decksArr.selectedCards.length < 2) {
     flipCardPic(event);
   }
 };
@@ -111,13 +111,12 @@ function flipCardBack(event) {
 
 function hideCard(event) {
   event.target.classList.add('hide-card');
-  decksArr.selectedCards = [];
-
 }
 
 function hideMatched(event) {
   var isMatch = decksArr.checkMatched();
   if (isMatch) {
+    console.log('match');
   //   for (var i = 0; i < gameCards.length; i++) {
     //   if (parseInt(gameCards[i].dataset.id) === card1 || parseInt(gameCards[i].dataset.id) === card2) {
 
