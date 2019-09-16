@@ -46,6 +46,8 @@ function clickGameBoard() {
 };
 
 function clickNewGameButton() {
+  decksArr.resetCards();
+  decksArr.shuffle(picSrc);
   switchSections(gameOverScreen, startScreen);
   clearInputs();
   showCards();
@@ -135,7 +137,6 @@ function hideMatched(event) {
   if (decksArr.matches === 5) {
     calculateTime();
     switchSections(gameScreen, gameOverScreen);
-    decksArr.shuffle(picSrc);
   }
 };
 
@@ -164,8 +165,8 @@ function logTime() {
 function showCards() {
   for (var i = 0; i < gameCards.length; i++) {
     gameCards[i].classList.remove('hide-card');
+    gameCards[i].classList.remove('flipped');
     event.target.parentElement.parentElement.parentElement.parentElement.children[2].children[1].children[i].children[0].src = 'images/letter-p.png';
-    gameCards[i].classList.toggle('pic-showing');
   }
 };
 
