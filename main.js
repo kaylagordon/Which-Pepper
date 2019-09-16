@@ -124,12 +124,12 @@ function hideMatched(event) {
   if (isMatch) {
     setTimeout(function() {
       hideCard(event)
-    }, 1000);
+    }, 500);
     gameAsidePlayer1MatchesNumber.innerText = decksArr.matches;
   } else {
     setTimeout(function() {
       flipCardBack(event)
-    }, 3000);
+    }, 2500);
   }
   if (decksArr.matches === 5) {
     calculateTime();
