@@ -84,6 +84,7 @@ function callMethods(event) {
   }
   if (decksArr.selectedCards.length === 2) {
     hideMatched(event);
+    console.log('two flipped');
   }
 };
 
@@ -104,24 +105,23 @@ function flipCardBack(event) {
     if (gameCards[i].classList.contains('flipped')) {
       gameCards[i].classList.remove('flipped');
       gameCards[i].children[0].src = 'images/letter-p.png';
+      decksArr.cards[i].updateSelected(decksArr);
     }
   }
-  decksArr.selectedCards = [];
 };
 
 function hideCard(event) {
-  event.target.classList.add('hide-card');
+  for (var i = 0; i < gameCards.length; i++) {
+    if (gameCards[i].classList.contains('flipped')) {
+      gameCards[i].classList.remove('flipped');
+      gameCards[i].classList.add('hide-card');
+    }
+  }
 }
 
 function hideMatched(event) {
   var isMatch = decksArr.checkMatched();
   if (isMatch) {
-    console.log('match');
-  //   for (var i = 0; i < gameCards.length; i++) {
-    //   if (parseInt(gameCards[i].dataset.id) === card1 || parseInt(gameCards[i].dataset.id) === card2) {
-
-    //   }
-    // }
     setTimeout(function() {
       hideCard(event)
     }, 1000);

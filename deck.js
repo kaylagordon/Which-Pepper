@@ -8,6 +8,7 @@ class Deck {
 
   checkMatched() {
     if(this.selectedCards[0].matchId === this.selectedCards[1].matchId) {
+      console.log(11);
       this.matchedCards.push(this.selectedCards[0]);
       this.matchedCards.push(this.selectedCards[1]);
       // this.selectedCards[0].matched = true;

@@ -13,9 +13,6 @@ class Cards {
     } else {
       deck.selectedCards.splice(deck.selectedCards.indexOf(this), 1);
     }
-    if(deck.selectedCards.length === 2) {
-      deck.checkMatched();
-    }
   }
 
 };
