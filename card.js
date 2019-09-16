@@ -1,10 +1,8 @@
 class Cards {
   constructor(cardObj) {
     this.cardId = parseInt(cardObj.cardId);
-    this.matched = false;
     this.matchId = cardObj.matchId;
     this.selected = false;
-    // this.picSrc = cardObj.picSrc;
   }
 
   updateSelected(deck) {
@@ -13,9 +11,6 @@ class Cards {
       deck.selectedCards.push(this);
     } else {
       deck.selectedCards.splice(deck.selectedCards.indexOf(this), 1);
-    }
-    if(deck.selectedCards.length === 2) {
-      deck.checkMatched();
     }
   }
 
