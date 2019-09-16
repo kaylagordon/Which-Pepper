@@ -8,11 +8,8 @@ class Deck {
 
   checkMatched() {
     if(this.selectedCards[0].matchId === this.selectedCards[1].matchId) {
-      console.log(11);
       this.matchedCards.push(this.selectedCards[0]);
       this.matchedCards.push(this.selectedCards[1]);
-      // this.selectedCards[0].matched = true;
-      // this.selectedCards[1].matched = true;
       this.matches++;
       this.selectedCards = [];
       return true;
@@ -22,10 +19,8 @@ class Deck {
   }
 
   resetCards() {
-    // for (var i = 0; i< this.cards.length; i++) {
       this.cards[i].selected = false;
-      // this.cards[i].matched = false;
-    // }
+      this.selectedCards = [];
   }
 
   shuffle(array) {

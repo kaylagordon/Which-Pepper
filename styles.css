@@ -298,6 +298,24 @@ img {
   width: 40%;
 }
 
+/* ANIMATIONS */
+/* ON CLICK */
+.on-click-animation {
+	animation: flip-on-click 0.5s;
+}
+
+@keyframes flip-on-click {
+  0% {
+    transform: translateX(0) rotateY(0);
+  }
+  50% {
+    transform: translateX(-100%) rotateY(-180deg);
+  }
+  100% {
+    transform: translateX(0) rotateY(0);
+  }
+}
+
 /* HIDING - KEEP AT BOTTOM */
 .hide {
   display: none;
