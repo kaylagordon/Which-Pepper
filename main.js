@@ -76,11 +76,14 @@ function calculateTime() {
   logTime();
 };
 
-function callUpdateSelected(event) {
+function callMethods(event) {
   for (var i = 0; i < decksArr.cards.length; i++) {
     if (parseInt(event.target.parentNode.dataset.id) === decksArr.cards[i].cardId) {
       decksArr.cards[i].updateSelected(decksArr);
     }
+  }
+  if (decksArr.selectedCards.length === 2) {
+    hideMatched(event);
   }
 };
 
@@ -90,28 +93,49 @@ function clearInputs() {
 };
 
 function flipCardPic(event) {
-  if (event.target.parentNode.classList.contains('pic-showing')) {
-    event.target.src = 'images/letter-p.png';
-    event.target.parentNode.classList.toggle('pic-showing');
-    callUpdateSelected(event);
-  } else if (decksArr.selectedCards.length < 2){
-    event.target.src = decksArr.cards[event.target.parentNode.dataset.id].matchId;
-    event.target.parentNode.classList.toggle('pic-showing');
-    callUpdateSelected(event);
-  }
+  event.target.src = decksArr.cards[event.target.parentNode.dataset.id].matchId;
+  event.target.parentNode.classList.add('flipped');
+  // rotate
+  callMethods(event);
 };
 
-function hideMatched(card1, card2) {
+function flipCardBack(event) {
   for (var i = 0; i < gameCards.length; i++) {
-    if (parseInt(gameCards[i].dataset.id) === card1 || parseInt(gameCards[i].dataset.id) === card2) {
-      gameCards[i].classList.add('hide-card');
+    if (gameCards[i].classList.contains('flipped')) {
+      gameCards[i].classList.remove('flipped');
+      gameCards[i].children[0].src = 'images/letter-p.png';
     }
   }
-  gameAsidePlayer1MatchesNumber.innerText = decksArr.matches;
+  decksArr.selectedCards = [];
+};
+
+function hideCard(event) {
+  event.target.classList.add('hide-card');
+  decksArr.selectedCards = [];
+
+}
+
+function hideMatched(event) {
+  var isMatch = decksArr.checkMatched();
+  if (isMatch) {
+  //   for (var i = 0; i < gameCards.length; i++) {
+    //   if (parseInt(gameCards[i].dataset.id) === card1 || parseInt(gameCards[i].dataset.id) === card2) {
+
+    //   }
+    // }
+    setTimeout(function() {
+      hideCard(event)
+    }, 1000);
+    gameAsidePlayer1MatchesNumber.innerText = decksArr.matches;
+  } else {
+    setTimeout(function() {
+      flipCardBack(event)
+    }, 3000);
+  }
   if (decksArr.matches === 5) {
     calculateTime();
     switchSections(gameScreen, gameOverScreen);
-    decksArr.shuffle();
+    decksArr.shuffle(picSrc);
   }
 };
 
@@ -138,7 +162,6 @@ function logTime() {
 };
 
 function showCards() {
-  console.log(event);
   for (var i = 0; i < gameCards.length; i++) {
     gameCards[i].classList.remove('hide-card');
     event.target.parentElement.parentElement.parentElement.parentElement.children[2].children[1].children[i].children[0].src = 'images/letter-p.png';

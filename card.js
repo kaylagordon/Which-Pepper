@@ -1,10 +1,9 @@
 class Cards {
   constructor(cardObj) {
     this.cardId = parseInt(cardObj.cardId);
-    this.matched = false;
     this.matchId = cardObj.matchId;
+    // this.matched = false;
     this.selected = false;
-    // this.picSrc = cardObj.picSrc;
   }
 
   updateSelected(deck) {

@@ -10,32 +10,34 @@ class Deck {
     if(this.selectedCards[0].matchId === this.selectedCards[1].matchId) {
       this.matchedCards.push(this.selectedCards[0]);
       this.matchedCards.push(this.selectedCards[1]);
-      this.selectedCards[0].matched = true;
-      this.selectedCards[1].matched = true;
+      // this.selectedCards[0].matched = true;
+      // this.selectedCards[1].matched = true;
       this.matches++;
-      hideMatched(this.selectedCards[0].cardId, this.selectedCards[1].cardId);
       this.selectedCards = [];
+      return true;
+    } else {
+      return false;
     }
   }
 
   resetCards() {
-    for (var i = 0; i< this.cards.length; i++) {
+    // for (var i = 0; i< this.cards.length; i++) {
       this.cards[i].selected = false;
-      this.cards[i].matched = false;
-    }
+      // this.cards[i].matched = false;
+    // }
   }
 
-  shuffle() {
-    var length = picSrc.length;
+  shuffle(array) {
+    var length = array.length;
     var temporaryLoc = null;
-    for (var i = 0; i < picSrc.length; i++) {
+    for (var i = 0; i < array.length; i++) {
       var newIndex = Math.floor(Math.random() * length);
       length--;
-      temporaryLoc = picSrc[length];
-      picSrc[length] = picSrc[newIndex];
-      picSrc[newIndex] = temporaryLoc;
+      temporaryLoc = array[length];
+      array[length] = array[newIndex];
+      array[newIndex] = temporaryLoc;
     }
-    this.resetCards();
+    // this.resetCards();
   }
 
 };
