@@ -28,7 +28,7 @@ header {
   width: 100%;
 }
 
-#nav-button {
+#top-player-button {
   background-image: url(images/nav-button.png);
   background-position: center;
   background-repeat: no-repeat;
@@ -301,6 +301,29 @@ img {
   font-size: 1.8vw;
   height: 4vw;
   width: 40%;
+}
+
+/* TOP PLAYER BOARD */
+.top-player-board {
+  display: flex;
+  justify-content: space-around;
+  padding: 2vw;
+  background-color: black;
+}
+
+.top-player {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  padding: 1vw;
+  background-color: white;
+  border-radius: 5%;
+}
+
+.top-player-title {
+  margin: 0;
 }
 
 /* ANIMATIONS */

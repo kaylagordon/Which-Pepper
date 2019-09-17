@@ -3,11 +3,13 @@ var gameOverScreen = document.querySelector('.game-over-screen');
 var gameScreen = document.querySelector('.game-screen');
 var rulesScreen = document.querySelector('.rules-screen');
 var startScreen = document.querySelector('.start-screen');
+var topPlayerBoard = document.querySelector('.top-player-board');
 
 // buttons
 var newGameButton = document.querySelector('#new-game-button');
 var rulesPlayButton = document.querySelector('#rules-play-button');
 var startPlayButton = document.querySelector('#start-play-button');
+var topPlayerButton = document.querySelector('#top-player-button');
 
 // text changes
 var gameAsidePlayer1MatchesNumber = document.querySelector('#game-aside-player1-matches-number');
@@ -15,6 +17,8 @@ var player1Text = document.querySelectorAll('.player1-text');
 var player2Text = document.querySelectorAll('.player2-text');
 var timerMinutes = document.querySelector('#timer-minutes');
 var timerSeconds = document.querySelector('#timer-seconds');
+var topPlayerNames = document.querySelectorAll('.top-player-name');
+var topPlayerTimes = document.querySelectorAll('.top-player-time');
 
 // other selectors
 var gameBoard = document.querySelector('#game-board');
@@ -29,12 +33,15 @@ var picSrc = ['images/card-pic5.jpg', 'images/card-pic1.jpg', 'images/card-pic2.
 var timeEnd = null;
 var timeStart = null;
 var totalTime = null;
+var player1Name = null;
+var player2Name = null;
 
 // event listeners
 gameBoard.addEventListener('click', clickGameBoard);
 newGameButton.addEventListener('click', clickNewGameButton);
 rulesPlayButton.addEventListener('click', clickRulesPlayButton);
 startPlayButton.addEventListener('click', clickStartPlayButton);
+topPlayerButton.addEventListener('click', showTopPlayers);
 
 // mega functions
 function clickGameBoard() {
@@ -61,8 +68,8 @@ function clickStartPlayButton() {
   if (startPlayer1Input.value.length) {
     sendToStorage('player1Name', startPlayer1Input.value);
     sendToStorage('player2Name', startPlayer2Input.value);
-    var player1Name = getFromStorage('player1Name');
-    var player2Name = getFromStorage('player2Name');
+    player1Name = getFromStorage('player1Name');
+    player2Name = getFromStorage('player2Name');
     insertNames(player1Text, player1Name);
     insertNames(player2Text, player2Name);
     switchSections(startScreen, rulesScreen);
@@ -72,6 +79,10 @@ function clickStartPlayButton() {
 };
 
 //functions
+function showTopPlayers() {
+  topPlayerBoard.classList.toggle('hide');
+};
+
 function sendToStorage(key, value) {
   localStorage.setItem(key, value);
 };
@@ -149,6 +160,7 @@ function hideMatched(event) {
   if (decksArr.matches === 5) {
     calculateTime();
     switchSections(gameScreen, gameOverScreen);
+    updateWinners();
   }
 };
 
@@ -194,4 +206,28 @@ function startTimer() {
 function switchSections(hide, show) {
   hide.classList.add('hide');
   show.classList.remove('hide');
+};
+
+var winners = [];
+
+function updateWinners() {
+  winners.push({name: player1Name, time: totalTime});
+  sortWinners();
+  var stringifiedWinnersArr = JSON.stringify(winners);
+  localStorage.setItem('winnersArr', stringifiedWinnersArr);
+  updateTopPlayerBoard();
+};
+
+function sortWinners(){
+  winners.sort(function(a, b) {
+    return a.time - b.time;
+  })
+};
+
+function updateTopPlayerBoard() {
+  var parsedWinnersArr = JSON.parse(localStorage.getItem('winnersArr'));
+  for (var i = 0; i < winners.length; i++) {
+    topPlayerNames[i].innerText = parsedWinnersArr[i].name;
+    topPlayerTimes[i].innerText = Math.round(parsedWinnersArr[i].time) + " seconds";
+  }
 };
