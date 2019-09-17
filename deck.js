@@ -6,7 +6,7 @@ class Deck {
     this.selectedCards = [];
   }
 
-  checkMatched() {
+  checkMatched(player) {
     if(this.selectedCards[0].matchId === this.selectedCards[1].matchId) {
       this.matchedCards.push(this.selectedCards[0]);
       this.matchedCards.push(this.selectedCards[1]);
@@ -37,7 +37,6 @@ class Deck {
       array[length] = array[newIndex];
       array[newIndex] = temporaryLoc;
     }
-    // this.resetCards();
   }
 
 };

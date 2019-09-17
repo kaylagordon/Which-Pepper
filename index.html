@@ -50,7 +50,7 @@
               <p class='start-input-label'>PLAYER 2</p>
             </div>
           <div id='start-button-with-error'>
-            <p class='start-error-message hide'>ENTER A NAME, PLEASE!</p>
+            <p class='start-error-message hide'>ENTER TWO NAMES, PLEASE!</p>
             <button type='button' name='start-button' class='play-button' id='start-play-button'>PLAY GAME</button>
           </div>
         </form>
@@ -70,13 +70,19 @@
           <!-- <p class='aside-p'># TOP PLAYER</p> -->
           <div class='game-aside-line'></div>
           <p class='aside-p'>MATCHES THIS ROUND</p>
-          <p class='game-aside-matches-number' id='game-aside-player1-matches-number'>#</p>
+          <p class='game-aside-matches-number' id='game-aside-player1-matches-number'>0</p>
           <div class='game-aside-line'></div>
+          <h1 id='player1-turn'>IT'S YOUR TURN!</h1>
           <!-- <h3 class='game-aside-h3'>GAME WINS</h3>
           <p class='aside-p'>ROUND #</p>
           <p class='aside-p aside-seconds'># SECONDS</p> -->
         </aside>
         <section id='game-board'>
+          <div class='game-start-popup'>
+            <h3><span class='popup-player-text'>PLAYER 1</span>, IT'S YOUR TURN!</h3>
+            <p>Find all matches as quickly as possible!</p>
+            <button class='play-button popup-start-button'>START GAME</button>
+          </div>
           <div class='card-row-3'>
             <div class='game-card' id='game-card1' data-id='0'>
               <img src='images/letter-p.png' alt='back of card'/>
@@ -119,8 +125,9 @@
           <!-- <p class='aside-p'># TOP PLAYER</p> -->
           <div class='game-aside-line'></div>
           <p class='aside-p'>MATCHES THIS ROUND</p>
-          <p class='game-aside-matches-number' id='game-aside-player2-matches-number'>#</p>
+          <p class='game-aside-matches-number' id='game-aside-player2-matches-number'>0</p>
           <div class='game-aside-line'></div>
+          <h1 class='hide' id='player2-turn'>IT'S YOUR TURN!</h1>
           <!-- <h3 class='game-aside-h3'>GAME WINS</h3>
           <p class='aside-p'>ROUND #</p>
           <p class='aside-p aside-seconds'># SECONDS</p> -->
@@ -128,8 +135,9 @@
       </section>
       <section class='game-over-screen hide'>
         <div id='game-over-info'>
-          <h2>CONGRATULATIONS, <span class='player1-text'>PLAYER 1</span> WINS!</h2>
-          <p id='game-over-timing'>It took you <span id='timer-minutes'>#</span> minutes and <span id='timer-seconds'>#</span> seconds.</p>
+          <h2>CONGRATULATIONS, <span class='winner-text'></span> WINS!</h2>
+          <p class='game-over-timing'>It took <span class='player1-text'></span> <span id='player1-minutes'>#</span> minutes and <span id='player1-seconds'>#</span> seconds.</p>
+          <p class='game-over-timing'>It took <span class='player2-text'></span> <span id='player2-minutes'>#</span> minutes and <span id='player2-seconds'>#</span> seconds.</p>
           <p class='rules-text'>Click below to keep playing.</p>
           <div id='game-over-buttons'>
             <button class='game-over-button' id='new-game-button'>NEW GAME</button>
@@ -140,6 +148,7 @@
     </main>
     <script type='text/javascript' src='card.js'></script>
     <script type='text/javascript' src='deck.js'></script>
+    <script type='text/javascript' src='player.js'></script>
     <script type='text/javascript' src='main.js'></script>
   </body>
 </html>

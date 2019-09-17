@@ -183,6 +183,10 @@ h3 {
   margin-top: 2vw;
 }
 
+.game-aside-matches-number {
+  font-size: 3vw;
+}
+
 .game-aside-round-number {
   font-size: 5vw;
   margin-top: 2vw;
@@ -190,6 +194,11 @@ h3 {
 
 .aside-seconds {
   margin-top: 0;
+}
+
+#player1-turn,
+#player2-turn {
+  color: lightgray;
 }
 
 #game-board {
@@ -260,6 +269,25 @@ img {
   width: 100%;
 }
 
+/* POP UP WINDOW */
+.game-start-popup {
+  width: 30%;
+  position: absolute;
+  z-index: 100;
+  background-color: lightgray;
+  border: 3px solid black;
+  text-align: center;
+  margin-left: 15%;
+  margin-top: 20%;
+}
+
+.popup-start-button{
+  width: 50%;
+  font-size: 1.4vw;
+  height:1.8vw;
+  margin: 1vw;
+}
+
 /* GAME OVER SCREEN */
 .game-over-screen {
   background-image: url(images/background.jpg);
@@ -282,7 +310,7 @@ img {
   width: 100%;
 }
 
-#game-over-timing {
+.game-over-timing {
   font-size: 1.8vw;
   font-weight: 600;
   margin-bottom: 3vw;
