@@ -42,8 +42,14 @@ newGameButton.addEventListener('click', clickNewGameButton);
 rulesPlayButton.addEventListener('click', clickRulesPlayButton);
 startPlayButton.addEventListener('click', clickStartPlayButton);
 topPlayerButton.addEventListener('click', showTopPlayers);
+window.addEventListener('load', pageLoad);
 
 // mega functions
+function pageLoad() {
+  console.log('load');
+  updateTopPlayerBoard();
+};
+
 function clickGameBoard() {
   if (event.target.parentNode.classList.contains('game-card') && decksArr.selectedCards.length < 2) {
     flipCardPic(event);
@@ -226,7 +232,7 @@ function sortWinners(){
 
 function updateTopPlayerBoard() {
   var parsedWinnersArr = JSON.parse(localStorage.getItem('winnersArr'));
-  for (var i = 0; i < winners.length; i++) {
+  for (var i = 0; i < parsedWinnersArr.length; i++) {
     topPlayerNames[i].innerText = parsedWinnersArr[i].name;
     topPlayerTimes[i].innerText = Math.round(parsedWinnersArr[i].time) + " seconds";
   }
