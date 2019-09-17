@@ -179,8 +179,7 @@ function showCards() {
     gameCards[i].classList.remove('hide-card');
     gameCards[i].classList.remove('flipped');
     gameCards[i].classList.remove('no-match-animation');
-
-    event.target.parentElement.parentElement.parentElement.parentElement.children[2].children[1].children[i].children[0].src = 'images/letter-p.png';
+    gameCards[i].children[0].src = 'images/letter-p.png';
   }
 };
 

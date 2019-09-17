@@ -17,7 +17,6 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-
 /* HEADER */
 header {
   background-color: white;
@@ -195,9 +194,55 @@ h3 {
 
 #game-board {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   grid-area: board;
   margin-top: 2vw;
+}
+
+.card-row-3,
+.card-row-4 {
+  display: flex;
+  justify-content: center;
+}
+
+#game-card1 {
+  transform: rotate(-25deg);
+}
+
+#game-card2 {
+  transform: rotate(20deg);
+}
+
+#game-card3 {
+  transform: rotate(-5deg);
+}
+
+#game-card4 {
+  transform: rotate(15deg);
+}
+
+#game-card5 {
+  transform: rotate(-30deg);
+}
+
+#game-card6 {
+  transform: rotate(-5deg);
+}
+
+#game-card7 {
+  transform: rotate(25deg);
+}
+
+#game-card8 {
+  transform: rotate(-15deg);
+}
+
+#game-card9 {
+  transform: rotate(15deg);
+}
+
+#game-card10 {
+  transform: rotate(-5deg);
 }
 
 .game-card {
@@ -214,46 +259,6 @@ h3 {
 img {
   width: 100%;
 }
-
-/* .game-card1 {
-  transform: rotate(-30deg) translate(40px, 40px);
-}
-
-.game-card2 {
-  transform: rotate(25deg) translate(90px, -30px);
-}
-
-.game-card3 {
-  transform: rotate(0deg) translate(120px, 0px);
-}
-
-.game-card4 {
-  transform: rotate(10deg) translate(-320px, 260px);
-}
-
-.game-card5 {
-  transform: rotate(-25deg) translate(120px, 100px);
-}
-
-.game-card6 {
-  transform: rotate(-5deg) translate(150px);
-}
-
-.game-card7 {
-  transform: rotate(20deg) translate(140px, -75px);
-}
-
-.game-card8 {
-  transform: rotate(-5deg) translate(-320px, 130px);
-}
-
-.game-card9 {
-  transform: rotate(15deg) translate(200px, -80px);
-}
-
-.game-card10 {
-  transform: rotate(-10deg) translate(250px);
-} */
 
 /* GAME OVER SCREEN */
 .game-over-screen {
@@ -304,14 +309,14 @@ img {
 }
 
 @keyframes flip-on-click {
-  100% {
-    transform: translateX(0) rotateY(0);
+  0% {
+    transform: rotateY(0);
   }
   50% {
-    transform: translateX(-100%) rotateY(-180deg);
+    transform: rotateY(360deg);
   }
   100% {
-    transform: translateX(0) rotateY(0);
+    transform: rotateY(0);
   }
 }
 
@@ -321,13 +326,13 @@ img {
 
 @keyframes flip-no-match {
   0% {
-    transform: translateX(0) rotateY(0);
+    transform: rotateY(0);
   }
   50% {
-    transform: translateX(-100%) rotateY(-180deg);
+    transform: rotateY(360deg);
   }
   100% {
-    transform: translateX(0) rotateY(0);
+    transform: rotateY(0);
   }
 }
 
