@@ -304,7 +304,7 @@ img {
 }
 
 @keyframes flip-on-click {
-  0% {
+  100% {
     transform: translateX(0) rotateY(0);
   }
   50% {

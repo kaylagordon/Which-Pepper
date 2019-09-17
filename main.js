@@ -9,10 +9,6 @@ var newGameButton = document.querySelector('#new-game-button');
 var rulesPlayButton = document.querySelector('#rules-play-button');
 var startPlayButton = document.querySelector('#start-play-button');
 
-// inputs
-var startPlayer1Input = document.querySelector('#start-player1-input');
-var startPlayer2Input = document.querySelector('#start-player2-input');
-
 // text changes
 var gameAsidePlayer1MatchesNumber = document.querySelector('#game-aside-player1-matches-number');
 var player1Text = document.querySelectorAll('.player1-text');
@@ -24,6 +20,8 @@ var timerSeconds = document.querySelector('#timer-seconds');
 var gameBoard = document.querySelector('#game-board');
 var gameCards = document.querySelectorAll('.game-card');
 var startErrorMessage = document.querySelector('.start-error-message');
+var startPlayer1Input = document.querySelector('#start-player1-input');
+var startPlayer2Input = document.querySelector('#start-player2-input');
 
 // global non-qs variables
 var decksArr = null;
@@ -61,15 +59,27 @@ function clickRulesPlayButton() {
 
 function clickStartPlayButton() {
   if (startPlayer1Input.value.length) {
+    sendToStorage('player1Name', startPlayer1Input.value);
+    sendToStorage('player2Name', startPlayer2Input.value);
+    var player1Name = getFromStorage('player1Name');
+    var player2Name = getFromStorage('player2Name');
+    insertNames(player1Text, player1Name);
+    insertNames(player2Text, player2Name);
     switchSections(startScreen, rulesScreen);
-    insertNames(player1Text, startPlayer1Input);
-    insertNames(player2Text, startPlayer2Input);
   } else {
     showErrorMessage(startErrorMessage);
   }
 };
 
 //functions
+function sendToStorage(key, value) {
+  localStorage.setItem(key, value);
+};
+
+function getFromStorage(key) {
+  return localStorage.getItem(key);
+};
+
 function calculateTime() {
   timeEnd = Date.now();
   totalTime = (timeEnd - timeStart)/1000;
@@ -144,7 +154,7 @@ function hideMatched(event) {
 
 function insertNames(text, input) {
   for (var i = 0; i < text.length; i++) {
-    var capitalName = input.value.toUpperCase();
+    var capitalName = input.toUpperCase();
     text[i].innerText = capitalName;
   }
 };
