@@ -1,8 +1,7 @@
 # Which Pepper Game
 ## Kayla Wood
-### Solo project 
-### Mod 1, Week 6
-#### Turing School of Software & Design
+### Solo project - Mod 1, Week 6
+### Turing School of Software & Design
 
 ### About
 * Which Pepper is a two player matching card game.
