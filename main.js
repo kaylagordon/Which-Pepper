@@ -11,6 +11,7 @@ var rulesPlayButton = document.querySelector('#rules-play-button');
 var startPlayButton = document.querySelector('#start-play-button');
 var topPlayerButton = document.querySelector('#top-player-button');
 var popupStartButton = document.querySelector('.popup-start-button');
+var rematchButton = document.querySelector('#rematch-button');
 
 // text changes
 var gameAsidePlayer1MatchesNumber = document.querySelector('#game-aside-player1-matches-number');
@@ -53,8 +54,20 @@ rulesPlayButton.addEventListener('click', clickRulesPlayButton);
 startPlayButton.addEventListener('click', clickStartPlayButton);
 topPlayerButton.addEventListener('click', showTopPlayers);
 window.addEventListener('load', pageLoad);
+rematchButton.addEventListener('click', clickRematchButton);
 
 // mega functions
+function clickRematchButton() {
+  instantiateCards();
+  startTimer();
+  decksArr.resetCards();
+  decksArr.shuffle(picSrc);
+  showCards();
+  resetPlayers();
+  popupPlayerText.innerText = player1Name;
+  switchSections(gameOverScreen, gameScreen);
+};
+
 function pageLoad() {
   updateTopPlayerBoard();
 };
