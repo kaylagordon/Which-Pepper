@@ -7,6 +7,15 @@
 ### About
 
 
+### Learning Goals
+* Solidify and demonstrate your understanding of:
+  * semantic HTML
+  * DRY JavaScript
+  * localStorage to persist data
+* Iterate through/filter DOM elements using for loops
+* Understand the difference between the data model and how the data is displayed on the DOM
+* Match/recreate a UI and create a great UX
+
 ### The Comp
 ![comp1](https://i.imgur.com/gk33sDW.jpg)
 ![comp2](https://i.imgur.com/QqCSh5q.jpg)
