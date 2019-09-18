@@ -13,7 +13,6 @@
 }
 
 * {
-  /* border: 1px solid steelblue; */
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -144,11 +143,11 @@ h2 {
 
 /* GAME SCREEN */
 .game-screen {
+  background-color: #F4F7F6;
   display: grid;
   grid-template-areas:
   'aside1 board aside2';
   grid-template-columns: 1fr 3fr 1fr;
-  background-color: #F4F7F6;
   height: 100%;
 }
 
@@ -173,7 +172,7 @@ h3 {
   margin: 1.8vw 0;
 }
 
-.aside-p {
+.aside-matches-title {
   font-size: 1.6vw;
   margin-top: 2vw;
 }
@@ -271,21 +270,21 @@ img {
 
 /* POP UP WINDOW */
 .game-start-popup {
-  width: 30%;
-  position: absolute;
-  z-index: 100;
   background-color: lightgray;
   border: 3px solid black;
-  text-align: center;
   margin-left: 15%;
   margin-top: 20%;
+  position: absolute;
+  text-align: center;
+  width: 30%;
+  z-index: 100;
 }
 
 .popup-start-button{
-  width: 50%;
   font-size: 1.4vw;
   height:1.8vw;
   margin: 1vw;
+  width: 50%;
 }
 
 /* GAME OVER SCREEN */
@@ -333,21 +332,21 @@ img {
 
 /* TOP PLAYER BOARD */
 .top-player-board {
+  background-color: black;
   display: flex;
   justify-content: space-around;
   padding: 2vw;
-  background-color: black;
 }
 
 .top-player {
+  align-items: center;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  border: 1px solid black;
   padding: 1vw;
-  background-color: white;
-  border-radius: 5%;
 }
 
 .top-player-title {
