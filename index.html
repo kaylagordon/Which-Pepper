@@ -2,38 +2,36 @@
   <head>
     <link href='styles.css' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700&display=swap" rel="stylesheet">
-    <title>Which Pepper?</title>
+    <title>Which Pepper</title>
   </head>
   <body>
-    <div id='header-wrapper'>
       <header>
         <button type='button' name='top-player-button' id='top-player-button'></button>
         <h1>WHICH PEPPER</h1>
       </header>
-    </div>
     <main>
       <section class='top-player-board hide'>
-        <div class='top-player' id='top-player-1'>
+        <div class='top-player'>
           <h2 class='top-player-title'>#1 PLAYER</h2>
           <h3 class='top-player-name'></h3>
           <p class='top-player-time'></p>
         </div>
-        <div class='top-player' id='top-player-2'>
+        <div class='top-player'>
           <h2 class='top-player-title'>#2 PLAYER</h2>
           <h3 class='top-player-name'></h3>
           <p class='top-player-time'></p>
         </div>
-        <div class='top-player' id='top-player-3'>
+        <div class='top-player'>
           <h2 class='top-player-title'>#3 PLAYER</h2>
           <h3 class='top-player-name'></h3>
           <p class='top-player-time'></p>
         </div>
-        <div class='top-player' id='top-player-4'>
+        <div class='top-player'>
           <h2 class='top-player-title'>#4 PLAYER</h2>
           <h3 class='top-player-name'></h3>
           <p class='top-player-time'></p>
         </div>
-        <div class='top-player' id='top-player-5'>
+        <div class='top-player'>
           <h2 class='top-player-title'>#5 PLAYER</h2>
           <h3 class='top-player-name'></h3>
           <p class='top-player-time'></p>
@@ -57,27 +55,27 @@
       </section>
       <section class='rules-screen hide'>
         <div id='rules-info'>
-          <h2>WELCOME <span class='player1-text'>PLAYER 1</span> AND <span class='player2-text'>PLAYER 2</span>!</h2>
-          <p class='rules-text'>The goal of the game is to find all 5 pairs of cards as quickly as possible. The player that finds the greatest numbers of pairs, wins.</p>
-          <p class='rules-text'>To begin playing, the player whose name is highlighted can click any card in the card pile. It will flip over and reveal a picture of the most adorable cat in the world, Pepper. Click another card. If they match, they will disappear and you will have completed a match! If they don't, you'll have three seconds to look at them before they flip back over. Then it's time for the other player to try!</p>
+          <h2>WELCOME <span class='player1-text'></span> AND <span class='player2-text'></span>!</h2>
+          <p class='rules-text'>The goal of the game is to find all 5 pairs of cards as quickly as possible. The player that finds all five pairs the fastest wins!</p>
+          <p class='rules-text'>To begin playing, player 1 will click "START GAME" and then will click any card in the card pile. It will flip over and reveal a picture of the most adorable cat in the world, Pepper. Click another card. If they match, they will disappear and you will have completed a match! If they don't, you'll have 2 seconds to look at them before they flip back over. Move quickly so you win!</p>
           <p class='rules-text'>After you play, you'll see the name of the final winner and how long it took to win the game.</p>
-          <button type='button' name='start-button' class='play-button' id='rules-play-button'>PLAY GAME</button>
+          <button type='button' name='start-play-button' class='play-button' id='rules-play-button'>PLAY GAME</button>
         </div>
       </section>
       <section class='game-screen hide'>
         <aside class='game-aside' id='game-aside-player1'>
-          <h3 class='game-aside-h3 player1-text'>PLAYER 1 NAME</h3>
+          <h3 class='player1-text'>PLAYER 1 NAME</h3>
           <div class='game-aside-line'></div>
-          <p class='aside-p'>MATCHES THIS ROUND</p>
+          <p class='aside-matches-title'>MATCHES THIS ROUND</p>
           <p class='game-aside-matches-number' id='game-aside-player1-matches-number'>0</p>
           <div class='game-aside-line'></div>
           <h1 id='player1-turn'>IT'S YOUR TURN!</h1>
         </aside>
         <section id='game-board'>
           <div class='game-start-popup'>
-            <h3><span class='popup-player-text'>PLAYER 1</span>, IT'S YOUR TURN!</h3>
+            <h3><span class='popup-player-text'></span>, IT'S YOUR TURN!</h3>
             <p>Find all matches as quickly as possible!</p>
-            <button class='play-button popup-start-button'>START GAME</button>
+            <button class='play-button popup-start-button' name='popup-start-button'>START GAME</button>
           </div>
           <div class='card-row-3'>
             <div class='game-card' id='game-card1' data-id='0'>
@@ -117,9 +115,9 @@
           </div>
         </section>
         <aside class='game-aside' id='game-aside-player2'>
-          <h3 class='game-aside-h3 player2-text'>PLAYER 2 NAME</h3>
+          <h3 class='player2-text'>PLAYER 2 NAME</h3>
           <div class='game-aside-line'></div>
-          <p class='aside-p'>MATCHES THIS ROUND</p>
+          <p class='aside-matches-title'>MATCHES THIS ROUND</p>
           <p class='game-aside-matches-number' id='game-aside-player2-matches-number'>0</p>
           <div class='game-aside-line'></div>
           <h1 class='hide' id='player2-turn'>IT'S YOUR TURN!</h1>
@@ -128,12 +126,12 @@
       <section class='game-over-screen hide'>
         <div id='game-over-info'>
           <h2>CONGRATULATIONS, <span class='winner-text'></span> WINS!</h2>
-          <p class='game-over-timing'>It took <span class='player1-text'></span> <span id='player1-minutes'>#</span> minutes and <span id='player1-seconds'>#</span> seconds.</p>
-          <p class='game-over-timing'>It took <span class='player2-text'></span> <span id='player2-minutes'>#</span> minutes and <span id='player2-seconds'>#</span> seconds.</p>
+          <p class='game-over-timing'>It took <span class='player1-text'></span> <span id='player1-minutes'></span> minutes and <span id='player1-seconds'></span> seconds.</p>
+          <p class='game-over-timing'>It took <span class='player2-text'></span> <span id='player2-minutes'></span> minutes and <span id='player2-seconds'></span> seconds.</p>
           <p class='rules-text'>Click below to keep playing.</p>
           <div id='game-over-buttons'>
-            <button class='game-over-button' id='new-game-button'>NEW GAME</button>
-            <button class='game-over-button' id='rematch-button'>REMATCH</button>
+            <button class='game-over-button' name='new-game-button' id='new-game-button'>NEW GAME</button>
+            <button class='game-over-button' name='rematch-button' id='rematch-button'>REMATCH</button>
           </div>
         </div>
       </section>
