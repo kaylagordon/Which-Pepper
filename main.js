@@ -174,12 +174,11 @@ function hideMatched(event) {
     }, 2500);
   }
   if (players[0].matchCount === 5 && decks.matches === 5 && event.target.parentElement.parentElement.parentElement.parentElement.children[2].children[5].classList.contains('hide')) {
-    console.log(event);
     calculateTime(players[0].startTime, 0);
+    switchSections(player1TurnLabel, player2TurnLabel);
     updateWinners(player1Name, 0);
     popupPlayerText.innerText = player2Name;
     showPopup();
-    switchSections(player1TurnLabel, player2TurnLabel);
   }
   if (players[1] && players[1].matchCount === 5) {
     calculateTime(players[1].startTime, 1);

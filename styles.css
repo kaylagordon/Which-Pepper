@@ -353,6 +353,12 @@ img {
   margin: 0;
 }
 
+/* HOVERS */
+button:hover,
+.game-card:hover {
+  cursor: pointer;
+}
+
 /* ANIMATIONS */
 .on-click-animation {
 	animation: flip-on-click 0.5s;
