@@ -74,7 +74,6 @@ function pageLoad() {
 
 function clickGameBoard() {
   if (event.target.classList.contains('popup-start-button')) {
-    console.log(event);
     hidePopup();
   }
   if (event.target.parentNode.classList.contains('game-card') && decksArr.selectedCards.length < 2 && event.target.parentElement.parentElement.parentElement.children[0].classList.contains('hide')) {
@@ -215,7 +214,8 @@ function hideMatched(event) {
       flipCardBack(event)
     }, 2500);
   }
-  if (playersArr[0].matchCount === 5 && decksArr.matches === 5) {
+  if (playersArr[0].matchCount === 5 && decksArr.matches === 5 && event.target.parentElement.parentElement.parentElement.parentElement.children[2].children[5].classList.contains('hide')) {
+    console.log(event);
     calculateTime(playersArr[0].startTime, 0);
     updateWinners(player1Name, 0);
     popupPlayerText.innerText = player2Name;
