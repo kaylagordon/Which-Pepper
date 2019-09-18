@@ -1,6 +1,6 @@
 class Deck {
-  constructor(deckObj) {
-    this.cards = deckObj.cards;
+  constructor(deck) {
+    this.cards = deck.cards;
     this.matchedCards = [];
     this.matches = 0;
     this.selectedCards = [];

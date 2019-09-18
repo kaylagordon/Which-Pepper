@@ -1,7 +1,7 @@
 class Cards {
-  constructor(cardObj) {
-    this.cardId = parseInt(cardObj.cardId);
-    this.matchId = cardObj.matchId;
+  constructor(card) {
+    this.cardId = parseInt(card.cardId);
+    this.matchId = card.matchId;
     this.selected = false;
   }
 

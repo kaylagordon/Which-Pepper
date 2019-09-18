@@ -1,8 +1,8 @@
 class Player {
-  constructor(playerObj) {
-    this.name = playerObj.name
+  constructor(player) {
     this.matchCount = 0;
-    this.startTime = playerObj.startTime;
+    this.name = player.name
+    this.startTime = player.startTime;
     this.totalTime = null;
   }
 };
