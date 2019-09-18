@@ -1,64 +1,47 @@
-var gameOverScreen = document.querySelector('.game-over-screen');
-var gameScreen = document.querySelector('.game-screen');
-var rulesScreen = document.querySelector('.rules-screen');
-var startScreen = document.querySelector('.start-screen');
-var topPlayerBoard = document.querySelector('.top-player-board');
-var newGameButton = document.querySelector('#new-game-button');
-var rulesPlayButton = document.querySelector('#rules-play-button');
-var startPlayButton = document.querySelector('#start-play-button');
-var topPlayerButton = document.querySelector('#top-player-button');
-var popupStartButton = document.querySelector('.popup-start-button');
-var rematchButton = document.querySelector('#rematch-button');
+var decks = null;
 var gameAsidePlayer1MatchesNumber = document.querySelector('#game-aside-player1-matches-number');
 var gameAsidePlayer2MatchesNumber = document.querySelector('#game-aside-player2-matches-number');
-var player1Text = document.querySelectorAll('.player1-text');
-var player2Text = document.querySelectorAll('.player2-text');
-var player1Minutes = document.querySelector('#player1-minutes');
-var player1Seconds = document.querySelector('#player1-seconds');
-var player2Minutes = document.querySelector('#player2-minutes');
-var player2Seconds = document.querySelector('#player2-seconds');
-var topPlayerNames = document.querySelectorAll('.top-player-name');
-var topPlayerTimes = document.querySelectorAll('.top-player-time');
-var popupPlayerText = document.querySelector('.popup-player-text');
-var winnerText = document.querySelector('.winner-text');
 var gameBoard = document.querySelector('#game-board');
 var gameCards = document.querySelectorAll('.game-card');
+var gameOverScreen = document.querySelector('.game-over-screen');
+var gameScreen = document.querySelector('.game-screen');
+var newGameButton = document.querySelector('#new-game-button');
+var picSrc = ['images/card-pic5.jpg', 'images/card-pic1.jpg', 'images/card-pic2.jpg', 'images/card-pic1.jpg', 'images/card-pic3.jpg', 'images/card-pic2.jpg', 'images/card-pic4.jpg', 'images/card-pic5.jpg', 'images/card-pic3.jpg', 'images/card-pic4.jpg'];
+var player1Minutes = document.querySelector('#player1-minutes');
+var player1Name = null;
+var player1Seconds = document.querySelector('#player1-seconds');
+var player1Text = document.querySelectorAll('.player1-text');
+var player1TurnLabel = document.querySelector('#player1-turn');
+var player2Minutes = document.querySelector('#player2-minutes');
+var player2Name = null;
+var player2Seconds = document.querySelector('#player2-seconds');
+var player2Text = document.querySelectorAll('.player2-text');
+var player2TurnLabel = document.querySelector('#player2-turn');
+var players = [];
+var popupPlayerText = document.querySelector('.popup-player-text');
+var popupStartButton = document.querySelector('.popup-start-button');
+var rematchButton = document.querySelector('#rematch-button');
+var rulesPlayButton = document.querySelector('#rules-play-button');
+var rulesScreen = document.querySelector('.rules-screen');
 var startErrorMessage = document.querySelector('.start-error-message');
+var startPlayButton = document.querySelector('#start-play-button');
 var startPlayer1Input = document.querySelector('#start-player1-input');
 var startPlayer2Input = document.querySelector('#start-player2-input');
-var player1TurnLabel = document.querySelector('#player1-turn');
-var player2TurnLabel = document.querySelector('#player2-turn');
+var startScreen = document.querySelector('.start-screen');
+var topPlayerBoard = document.querySelector('.top-player-board');
+var topPlayerButton = document.querySelector('#top-player-button');
+var topPlayerNames = document.querySelectorAll('.top-player-name');
+var topPlayerTimes = document.querySelectorAll('.top-player-time');
 var winners = getWinnersFromStorage() || [];
-var decks = null;
-var picSrc = ['images/card-pic5.jpg', 'images/card-pic1.jpg', 'images/card-pic2.jpg', 'images/card-pic1.jpg', 'images/card-pic3.jpg', 'images/card-pic2.jpg', 'images/card-pic4.jpg', 'images/card-pic5.jpg', 'images/card-pic3.jpg', 'images/card-pic4.jpg'];
-var players = [];
-var player1Name = null;
-var player2Name = null;
+var winnerText = document.querySelector('.winner-text');
 
-// event listeners
 gameBoard.addEventListener('click', clickGameBoard);
 newGameButton.addEventListener('click', clickNewGameButton);
+rematchButton.addEventListener('click', clickRematchButton);
 rulesPlayButton.addEventListener('click', clickRulesPlayButton);
 startPlayButton.addEventListener('click', clickStartPlayButton);
 topPlayerButton.addEventListener('click', showTopPlayers);
 window.addEventListener('load', pageLoad);
-rematchButton.addEventListener('click', clickRematchButton);
-
-// mega functions
-function clickRematchButton() {
-  instantiateCards();
-  startTimer();
-  decks.resetCards();
-  decks.shuffle(picSrc);
-  showCards();
-  resetPlayers();
-  popupPlayerText.innerText = player1Name;
-  switchSections(gameOverScreen, gameScreen);
-};
-
-function pageLoad() {
-  updateTopPlayerBoard();
-};
 
 function clickGameBoard() {
   if (event.target.classList.contains('popup-start-button')) {
@@ -76,6 +59,17 @@ function clickNewGameButton() {
   clearInputs();
   showCards();
   resetPlayers();
+};
+
+function clickRematchButton() {
+  instantiateCards();
+  startTimer();
+  decks.resetCards();
+  decks.shuffle(picSrc);
+  showCards();
+  resetPlayers();
+  popupPlayerText.innerText = player1Name;
+  switchSections(gameOverScreen, gameScreen);
 };
 
 function clickRulesPlayButton() {
@@ -99,39 +93,6 @@ function clickStartPlayButton() {
   }
 };
 
-//functions
-function getWinnersFromStorage() {
-  if ('winnersStorage' in localStorage) {
-   return JSON.parse(localStorage.getItem('winnersStorage'));
-  }
-};
-
-function showPopup() {
-  event.target.parentElement.parentElement.parentElement.children[0].classList.remove('hide');
-  decks.resetCards();
-  decks.shuffle(picSrc);
-  instantiateCards();
-  showCards();
-};
-
-function hidePopup(playerName) {
-  event.target.parentNode.classList.add('hide');
-  var player = new Player({name: event.target.parentElement.children[0].children[0].innerText, startTime: Date.now()})
-  players.push(player);
-};
-
-function showTopPlayers() {
-  topPlayerBoard.classList.toggle('hide');
-};
-
-function sendToStorage(key, value) {
-  localStorage.setItem(key, value);
-};
-
-function getFromStorage(key) {
-  return localStorage.getItem(key);
-};
-
 function calculateTime(start, i) {
   timeEnd = Date.now();
   players[i].totalTime = (timeEnd - start)/1000;
@@ -153,14 +114,6 @@ function clearInputs() {
   startPlayer2Input.value = '';
 };
 
-function flipCardPic(event) {
-  event.target.parentNode.classList.add('on-click-animation');
-  event.target.parentNode.classList.remove('no-match-animation');
-  event.target.src = decks.cards[event.target.parentNode.dataset.id].matchId;
-  event.target.parentNode.classList.add('flipped');
-  callMethods(event);
-};
-
 function flipCardBack(event) {
   for (var i = 0; i < gameCards.length; i++) {
     if (gameCards[i].classList.contains('flipped')) {
@@ -173,6 +126,24 @@ function flipCardBack(event) {
   }
 };
 
+function flipCardPic(event) {
+  event.target.parentNode.classList.add('on-click-animation');
+  event.target.parentNode.classList.remove('no-match-animation');
+  event.target.src = decks.cards[event.target.parentNode.dataset.id].matchId;
+  event.target.parentNode.classList.add('flipped');
+  callMethods(event);
+};
+
+function getFromStorage(key) {
+  return localStorage.getItem(key);
+};
+
+function getWinnersFromStorage() {
+  if ('winnersStorage' in localStorage) {
+    return JSON.parse(localStorage.getItem('winnersStorage'));
+  }
+};
+
 function hideCard(event) {
   for (var i = 0; i < gameCards.length; i++) {
     if (gameCards[i].classList.contains('flipped')) {
@@ -181,7 +152,7 @@ function hideCard(event) {
       gameCards[i].classList.remove('on-click-animation');
     }
   }
-}
+};
 
 function hideMatched(event) {
   var isMatch = decks.checkMatched();
@@ -219,8 +190,10 @@ function hideMatched(event) {
   }
 };
 
-function resetPlayers() {
-  players = [];
+function hidePopup(playerName) {
+  event.target.parentNode.classList.add('hide');
+  var player = new Player({name: event.target.parentElement.children[0].children[0].innerText, startTime: Date.now()})
+  players.push(player);
 };
 
 function insertNames(text, input) {
@@ -255,6 +228,18 @@ function logTime() {
   }
 };
 
+function pageLoad() {
+  updateTopPlayerBoard();
+};
+
+function resetPlayers() {
+  players = [];
+};
+
+function sendToStorage(key, value) {
+  localStorage.setItem(key, value);
+};
+
 function showCards() {
   for (var i = 0; i < gameCards.length; i++) {
     gameCards[i].classList.remove('hide-card');
@@ -268,6 +253,24 @@ function showErrorMessage(errorText) {
   errorText.classList.remove('hide');
 };
 
+function showPopup() {
+  event.target.parentElement.parentElement.parentElement.children[0].classList.remove('hide');
+  decks.resetCards();
+  decks.shuffle(picSrc);
+  instantiateCards();
+  showCards();
+};
+
+function showTopPlayers() {
+  topPlayerBoard.classList.toggle('hide');
+};
+
+function sortWinners(){
+  winners.sort(function(a, b) {
+    return a.time - b.time;
+  })
+};
+
 function startTimer() {
   timeStart = Date.now();
 };
@@ -275,21 +278,6 @@ function startTimer() {
 function switchSections(hide, show) {
   hide.classList.add('hide');
   show.classList.remove('hide');
-};
-
-
-function updateWinners(playerName, i) {
-  winners.push({name: playerName, time: players[i].totalTime});
-  sortWinners();
-  var stringifiedWinners = JSON.stringify(winners);
-  localStorage.setItem('winnersStorage', stringifiedWinners);
-  updateTopPlayerBoard();
-};
-
-function sortWinners(){
-  winners.sort(function(a, b) {
-    return a.time - b.time;
-  })
 };
 
 function updateTopPlayerBoard() {
@@ -306,4 +294,12 @@ function updateTopPlayerBoard() {
       topPlayerTimes[i].innerText = Math.round(parsedWinners[i].time) + " seconds";
     }
   }
+};
+
+function updateWinners(playerName, i) {
+  winners.push({name: playerName, time: players[i].totalTime});
+  sortWinners();
+  var stringifiedWinners = JSON.stringify(winners);
+  localStorage.setItem('winnersStorage', stringifiedWinners);
+  updateTopPlayerBoard();
 };
