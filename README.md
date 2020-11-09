@@ -5,7 +5,7 @@
 
 ### Deployed Site: https://kaylaewood.github.io/Which-Pepper/ 
 
-![gif](https://share.getcloudapp.com/7Ku89bmo)
+![gif](https://user-images.githubusercontent.com/51416773/98488803-6ffe5400-21e8-11eb-8798-f3db40b4ca8a.gif)
 
 ### About
 * Which Pepper is a two player matching card game.
